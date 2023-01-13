@@ -1,0 +1,19 @@
+.navbar {
+    background-color: gray;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.spanCartWidget {
+    padding-left: 10px;
+}
+
+.iconCartWidget {
+    text-decoration: none;
+    color: rgb(252, 124, 124);
+}
+
+.spanCartWidget {
+    color: white;
+}

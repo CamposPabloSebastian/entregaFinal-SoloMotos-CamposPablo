@@ -1,0 +1,35 @@
+.img-fondo {
+    position: relative;
+}
+
+.img-back {
+    width: 100%;
+    height: 70%;
+    overflow: hidden;
+}
+
+.title {
+    position: absolute;
+    bottom: 60%;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    /* font-size: 2.5em; */
+}
+
+.pagos {
+    text-align: center;
+    padding: 2%;
+}
+
+.pagos ul {
+    list-style: none;
+    color: #999;
+}
+
+.opc-pago {
+    /* background-color: #137b9250; */
+    box-shadow: 0px 0px 20px 3px #d2ead485;
+    ;
+}
