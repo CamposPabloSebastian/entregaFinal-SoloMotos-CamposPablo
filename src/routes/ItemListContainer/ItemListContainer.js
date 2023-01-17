@@ -2,33 +2,27 @@ import React, { useEffect, useState } from "react";
 import ItemList from "../../components/ItemList/ItemList";
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import Filters from "../../components/Filters/Filters";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const ItemListContainer = () => {
 
     const [data, setData] = useState([]);
-    const [filter, setFilter] = useState('');
-    const navigate = useNavigate();
-
-    const filtroHandler = (filtroSelect) => {
-        setFilter(filtroSelect);
-    };
+    const { estilo } = useParams();
 
     useEffect(() => {
         const db = getFirestore();
         const itemsCollection = collection(db, 'soloMotos-Items');
-        const q = query(itemsCollection, where('marca', '==', filter))
-        filter ?
 
+        if (estilo !== undefined) {
+            const q = query(itemsCollection, where('tipo', '==', estilo));
             getDocs(q).then(snapshot => {
                 const data = snapshot.docs.map((doc) => ({
                     id: doc.id,
                     ...doc.data()
                 }))
                 setData(data);
-                navigate(`/categoria/${filter.toLowerCase()}`);
-            }) :
-
+            })
+        } else {
             getDocs(itemsCollection).then(snapshot => {
                 const data = snapshot.docs.map((doc) => ({
                     id: doc.id,
@@ -36,12 +30,13 @@ const ItemListContainer = () => {
                 }))
                 setData(data);
             });
-    }, [filter, navigate]);
+        }
+    }, [estilo]);
 
 
     return (
         <>
-            <Filters filtroHandler={filtroHandler} />
+            <Filters />
             <div className="container w-75">
                 <div className="row d-flex justify-content-around">
                     <ItemList listaObjetos={data} />

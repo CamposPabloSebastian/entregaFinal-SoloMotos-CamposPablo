@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 // You can specify which plugins you need
 // import { Tooltip, Toast, Popover, Grid } from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+
+
 //Importaciones de firabase
 
 // // Import the functions you need from the SDKs you need
